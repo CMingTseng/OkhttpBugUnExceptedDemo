@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.androidmov.okhttputil.FileOperation.FileDownLoader;
 import com.androidmov.okhttputil.FileOperation.IFileTransferProgressCallback;
@@ -13,15 +14,19 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnDownload;
+    private EditText etUrl,etLocalFileSaveName ,etSavePath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnDownload = (Button)findViewById(R.id.btnStartdownload);
+        etLocalFileSaveName = (EditText)findViewById(R.id.etFileName);
+        etUrl = (EditText)findViewById(R.id.etURL);
+        etSavePath = (EditText)findViewById(R.id.etPath);
         btnDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startdownLoadAction( url, localFileSavedName, savePath);
+                startdownLoadAction( etUrl.getText().toString(), etLocalFileSaveName.getText().toString(), etSavePath.getText().toString());
             }
         });
     }
